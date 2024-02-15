@@ -1,0 +1,197 @@
+service: graphql-api
+
+frameworkVersion: "3"
+
+plugins: 
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  graphqlHandler:
+    handler: graphql/graphqlHandler.graphqlHandler
+
+# Inventory CRUD operations
+  getInventory:
+    handler: inventory/getInventory.graphqlHandler
+    timeout: 30
+    events:
+      - httpApi:
+          path: /inventory/get
+          timeout: 30
+          method: ANY
+
+  getAllInventory:
+    handler: inventory/getAllInventory.graphqlHandler
+    events:
+      - httpApi:
+          path: /inventory/getAll
+          method: ANY
+
+  createInventory:
+    handler: inventory/createInventory.graphqlHandler
+    events:
+      - httpApi:
+          path: /inventory/create
+          method: ANY
+
+  updateInventory:
+    handler: inventory/updateInventory.graphqlHandler
+    events:
+      - httpApi:
+          path: /inventory/update
+          method: ANY
+
+  deleteInventory:
+    handler: inventory/deleteInventory.graphqlHandler
+    events:
+      - httpApi:
+          path: /inventory/delete
+          method: ANY
+
+# Product CRUD operations
+  addProduct:
+    handler: product/addProduct.graphqlHandler
+    events:
+      - httpApi:
+          path: /product/add
+          method: ANY
+
+  getProductById:
+    handler: product/getByIdProduct.graphqlHandler
+    events:
+      - httpApi:
+          path: /product/getById
+          method: ANY
+
+  getAllProduct:
+    handler: product/getAllProduct.graphqlHandler
+    events:
+      - httpApi:
+          path: /product/getAll
+          method: ANY
+
+  updateProduct:
+    handler: product/updateProduct.graphqlHandler
+    events:
+      - httpApi:
+          path: /product/update
+          method: ANY
+
+  deleteProduct:
+    handler: product/deleteProduct.graphqlHandler
+    events:
+      - httpApi:
+          path: /product/delete
+          method: ANY
+
+# Orders CRUD operations
+  post:
+    handler: order/post.graphqlHandler
+    events:
+      - httpApi:
+          path: /order/post
+          method: ANY
+
+  getbyid:
+    handler: order/getbyid.graphqlHandler
+    events:
+      - httpApi:
+          path: /order/getbyid
+          method: ANY
+
+  update:
+    handler: order/update.graphqlHandler
+    events:
+      - httpApi:
+          path: /order/update
+          method: ANY
+
+  delete:
+    handler: order/delete.graphqlHandler
+    events:
+      - httpApi:
+          path: /order/delete
+          method: ANY
+
+  
+  get:
+    handler: order/get.graphqlHandler
+    events:
+      - httpApi:
+          path: /order/get
+          method: ANY
+
+# Customer CRUD operations
+  postCustomer:
+    handler: customer/postCustomer.graphqlHandler
+    events:
+      - httpApi:
+          path: /customer/postCustomer
+          method: ANY
+
+  getCustomer:
+    handler: customer/getCustomer.graphqlHandler
+    events:
+      - httpApi:
+          path: /customer/getCustomer
+          method: ANY
+
+  getAllCustomers:
+    handler: customer/getAllCustomers.graphqlHandler
+    events:
+      - httpApi:
+          path: /customer/getAllCustomers
+          method: ANY
+
+  updateCustomer:
+    handler: customer/updateCustomer.graphqlHandler
+    events:
+      - httpApi:
+          path: /customer/updateCustomer
+          method: ANY
+
+  deleteCustomer:
+    handler: customer/deleteCustomer.graphqlHandler
+    events:
+      - httpApi:
+          path: /customer/deleteCustomer
+          method: ANY
+
+# Cart CRUD operations
+  postCart:
+    handler: cart/postCart.graphqlHandler
+    events:
+      - httpApi:
+          path: /cart/postCart
+          method: ANY
+
+  getCart:
+    handler: cart/getCart.graphqlHandler
+    events:
+      - httpApi:
+          path: /cart/getCart
+          method: ANY
+
+  getAllCart:
+    handler: cart/getAllCart.graphqlHandler
+    events:
+      - httpApi:
+          path: /cart/getAllCart
+          method: ANY
+
+  updateCart:
+    handler: cart/updateCart.graphqlHandler
+    events:
+      - httpApi:
+          path: /cart/update
+          method: ANY
+
+  deleteCart:
+    handler: cart/deleteCart.graphqlHandler
+    events:
+      - httpApi:
+          path: /cart/delete
+          method: ANY

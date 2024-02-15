@@ -1,0 +1,18 @@
+scalar JSON
+
+type Inventory {
+  inventory_id: ID
+  inventory_details: JSON
+}
+
+type Query {
+  getAllInventory: [Inventory]
+  getInventoryById(inventory_id: ID!): Inventory
+
+}
+
+type Mutation {
+  addInventory(inventory_id: ID!, inventory_details: JSON!): Inventory
+  updateInventory(inventory_id: ID!, inventory_details: JSON!): Inventory
+  deleteInventory(inventory_id: ID!): Inventory
+}

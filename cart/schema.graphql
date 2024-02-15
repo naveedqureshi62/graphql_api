@@ -1,0 +1,19 @@
+scalar JSON
+
+type Cartitem {
+  cartitemid: ID
+  customer_id: ID
+  product_id: ID
+  product_details: JSON
+}
+
+type Query {
+  getAllCartitems: [Cartitem]
+  getCartitem(cartitemid: ID!): Cartitem
+}
+
+type Mutation {
+  addCartitem(customer_id: ID!, product_id: ID, product_details: JSON!): Cartitem
+  updateCartitem(cartitemid: ID!, product_details: JSON!): Cartitem
+  deleteCartitem(cartitemid: ID!): Boolean
+}

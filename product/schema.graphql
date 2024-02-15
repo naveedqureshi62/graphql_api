@@ -1,0 +1,18 @@
+scalar JSON
+
+type Product {
+  product_id: ID
+  product_details: JSON
+  inventory_id: ID
+}
+
+type Query {
+ getAllProducts: [Product]
+  getProductById(product_id: ID!): Product
+}
+
+type Mutation {
+  addProduct(product_id: ID!, product_details: JSON!, inventory_id: ID!): Product
+  updateProduct(product_id: ID!, product_details: JSON!): Product
+  deleteProduct(product_id: ID!): Product
+}

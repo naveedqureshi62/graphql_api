@@ -1,0 +1,17 @@
+scalar JSON
+type Order {
+  order_id: ID
+  customer_id:ID
+  order_details: JSON
+}
+
+type Mutation {
+addOrder(customer_id :ID,order_details: JSON!): Order
+updateOrder(order_id: ID!,customer_id: ID, order_details: JSON!): Order
+deleteOrder(order_id: ID!): Order
+
+
+type Query {
+  getOrder(order_id: ID!): Order
+  getAllOrders: [Order]
+}
